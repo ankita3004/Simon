@@ -8,10 +8,12 @@ var started=false;
 
 var level=0;
 
+var score=0;
+
 function nextSequence(){
   userClickedPattern=[];
   level++;
-    $("#level-title").text("Level " +level);
+    $("#level-title").text("Level " +level+ " Score " +score);
   var randomNumber=Math.floor(Math.random()*4);
 
   var randomChosenColour=buttonColours[randomNumber];
@@ -56,6 +58,7 @@ function checkAnswer(currentLevel) {
          setTimeout(function () {
            nextSequence();
          },1000);
+         score+=10;
        }
    } else {
      playSound("wrong");
@@ -72,6 +75,7 @@ function checkAnswer(currentLevel) {
 
 function startOver() {
   level=0;
+  score=0;
   gamePattern=[];
   started=false;
 };
